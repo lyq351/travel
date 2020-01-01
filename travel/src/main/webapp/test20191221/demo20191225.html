@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    function createComparisonFunction(propertyName) {
+        return function (object1,object2) {
+            var value1 = object1[propertyName];
+            var value2 = object2[propertyName];
+            if(value1 < value2){
+                return -1;
+            }else if(value1 > value2){
+                return 1;
+            }else {
+                return 0;
+            }
+        }
+    }
+
+    var data1 = [{name:"li1i",age:34},{name:"zizi",age:23}];
+    var data2 = [{name:"li1i",age:34},{name:"zizi",age:23},{name:"aiai",age:55}];
+    //data1.sort(createComparisonFunction("age"));
+    data2.sort(createComparisonFunction("name"));
+   // alert(data1[0].name);
+   //alert(data1[1].name);
+    alert(data2[0].name);
+    alert(data2[1].name);
+    alert(data2[2].name);
+
+    //disunderstand
+    function createFunction() {
+        var result = new Array();
+        for(var i=0;i<5;i++){
+            result[i] = function (num) {
+                return function () {
+                    return num;
+                }
+            }(i);
+        }
+        return result;
+    }
+</script>
+</html>
